@@ -1,38 +1,35 @@
-.App {
-  text-align: center;
-}
+/* Original Purple:  #8774F0;*/
+/* Black #000000; */
+/* Cool White: #F7ECE1; */
+/* Indigo: #610F7F; */
+/* Maybe (Beaver): #A17C6B */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Body Area */
+body {
+  background-color: #8774F0;
 }
+/* ============================ */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Title Area */
+.logo-cont {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.word-whiz-logo {
+  width: 40%
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo-cont, .word-whiz-logo {
+  margin-bottom: -10%;
 }
+/* ============================ */
+
+/* Middle Page Area */
+
+.summary-cont-main {
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================ */
