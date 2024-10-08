@@ -11,24 +11,26 @@ function App() {
   const [pageState, setPageState] = useState("default");
 // -----------------------------------------------------------------------------------------------------------------------
   const [items, setItems] = useState([]);
-  const [newItemName, setNewItemName] = useState("");
+  const [newUserName, setUserName] = useState("");
+  const [newPassword, setNewPassword] = useState("")
 
   useEffect(() => {
     axios.get(`accounts.json`).then((response) => {
+      console.log(response.data)
       setItems(response.data);
     });
   }, []);
 
   const addItem = () => {
-    axios.post(`accounts.json`, { username: newItemName }).then((response) => {
-      console.log(response.data)
+    axios.post('accounts.json', { username: newUserName, password: newPassword }).then((response) => {
       setItems(response.data);
-      setNewItemName("goat");
+      setUserName("");
     });
   };
 
-  const handleNewItemChange = (event) => {
-    setNewItemName(event.target.value);
+  const handleNewItemChange = (username, password) => {
+    setUserName(username.target.value);
+    setNewPassword(password.target.value)
   };
 
   return (
@@ -39,7 +41,7 @@ function App() {
         </div>
       ))}
       <div>
-        <input type="text" value={newItemName} onChange={handleNewItemChange} />
+        <input type="text" value={newUserName} onChange={handleNewItemChange} />
         <button onClick={addItem}>Add Item</button>
       </div>
     </div>
