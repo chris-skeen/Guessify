@@ -1,20 +1,18 @@
 import { useState } from "react";
 import "./App.css";
 
-const url = process.env.PUBLIC_URL + "images/word-whiz-logo.png"
+const signUpBtn = document.getElementById('sign-up');
 
 function App() {
   const [pageState, setPageState] = useState("default");
   if (pageState === "default") {
     return (
       <div className="App">
-        <div className="logo-cont">
-          <img className="word-whiz-logo" src={url} alt="Word Whiz Logo!"/>
-        </div>
-        <div className="summary-cont-main">
-          <h1 className="summary-header">About</h1>
-          <span className="summary-cont"></span>
-        </div>
+          <div className="main-title">Word Whiz</div>
+          <div className="signup-cont">
+            <button id="sign-up" className="both-btn">Sign Up!</button>
+            <button id="log-in" className="both-btn">Log In!</button>
+          </div>
       </div>
     );
   } else {

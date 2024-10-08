@@ -1,35 +1,62 @@
 /* Original Purple:  #8774F0;*/
-/* Black #000000; */
-/* Cool White: #F7ECE1; */
-/* Indigo: #610F7F; */
+/* Blue #2575fc; */
+/* Cool White: #fff; */
+/* Indigo: #6a11cb; */
 /* Maybe (Beaver): #A17C6B */
 
 /* Body Area */
-body {
-  background-color: #8774F0;
-}
-/* ============================ */
 
-/* Title Area */
-.logo-cont {
+body {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  font-family: 'Arial', sans-serif;
+  margin: 0%;
 }
 
-.word-whiz-logo {
-  width: 40%
+/* ------------------------ */
+
+/* Main title Area */
+
+.main-title {
+  font-size: 80px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  animation: glow 1.5s infinite alternate;
+  margin-bottom: 20%;  
+  /* ^FLAGFLAGFLAGFLAG^ */
 }
 
-.logo-cont, .word-whiz-logo {
-  margin-bottom: -10%;
+@keyframes glow {
+  0% {
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.7);
+  }
 }
-/* ============================ */
+/* ------------------------ */
 
 /* Middle Page Area */
+.both-btn {
+  width: 75%;
+  height: 15vh;
+  color: white;
+  background-color: #2575fc;
+  font-size: 35pt;
+  margin: 0% 0% 0% 5%;
+}
 
-.summary-cont-main {
+.already-have-acc-cont {
   display: flex;
   justify-content: center;
 }
 
-/* ============================ */
+.already-have-acc {
+
+  color:#fff
+}
