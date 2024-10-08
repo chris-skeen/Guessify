@@ -31,6 +31,16 @@ body {
   /* ^FLAGFLAGFLAGFLAG^ */
 }
 
+.main-title-signup {
+  font-size: 80px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  animation: glow 1.5s infinite alternate;
+  margin-bottom: 120%;  
+}
+
 @keyframes glow {
   0% {
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
@@ -48,7 +58,7 @@ body {
   color: white;
   background-color: #2575fc;
   font-size: 35pt;
-  margin: 0% 0% 0% 5%;
+  margin: 0% 0% 0% 10%;
 }
 
 .already-have-acc-cont {
