@@ -2,7 +2,28 @@
 
 import { useState, useEffect} from "react";
 import "./App.css"
-import data from "./accounts.json"
+
+const url = 'https://random-word-api.herokuapp.com/word'
+fetch(url)
+.then(response => response.json())
+.then(data => findWordStuff(data[0]))
+let condition = true;
+
+function findWordStuff(data) {
+  while (condition == true) {
+    try {
+      console.log(data)
+      let newUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${data}`;
+      fetch(newUrl)
+      .then(response => response.json())
+      .then(data => console.log(data[0].meanings[0].definitions[0].definition))
+      condition = false;
+    } catch(err){
+      console.log(err)
+    }
+
+  }
+}
 
 function App() {
   // BEFORE AREA --------------------------------------------------------------------------------------------------------
@@ -10,10 +31,7 @@ function App() {
   const playBtn = <button className="playBtn" onClick={() =>{
     setPageState("play")
   }}>Play</button>
-  const url = 'https://www.dictionaryapi.com/api/v3/references/collegiate/json/voluminous?key=e3dcc849-cf03-4cc2-9016-7bfba82e149a'
-  fetch(url)
-  .then(response => response.json)
-  .then(data => console.log(data))
+  
 
 
 // -----------------------------------------------------------------------------------------------------------------------
