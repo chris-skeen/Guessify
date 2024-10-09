@@ -1,74 +1,39 @@
-import { useState, useRef, useEffect} from "react";
+import { useState, useEffect} from "react";
 import "./App.css"
-import axios from "axios";
-
-
-
+import data from "./accounts.json"
 
 function App() {
   // BEFORE AREA --------------------------------------------------------------------------------------------------------
-  const signUpBtn =  <button onClick={()=> {setPageState('sign-up')}} id="sign-up" className="both-btn">Sign Up!</button>
   const [pageState, setPageState] = useState("default");
+  const playBtn = <button className="playBtn" onClick={() =>{
+    setPageState("play")
+  }}>Play</button>
 // -----------------------------------------------------------------------------------------------------------------------
-  const [items, setItems] = useState([]);
-  const [newUserName, setUserName] = useState("");
-  const [newPassword, setNewPassword] = useState("")
 
-  useEffect(() => {
-    axios.get(`accounts.json`).then((response) => {
-      console.log(response.data)
-      setItems(response.data);
-    });
-  }, []);
 
-  const addItem = () => {
-    axios.post('accounts.json', { username: newUserName, password: newPassword }).then((response) => {
-      setItems(response.data);
-      setUserName("");
-    });
-  };
-
-  const handleNewItemChange = (username, password) => {
-    setUserName(username.target.value);
-    setNewPassword(password.target.value)
-  };
-
-  return (
-    <div>
-      {items.map((item) => (
-        <div key={item.username}>
-          <h3>{item.password}</h3>
-        </div>
-      ))}
-      <div>
-        <input type="text" value={newUserName} onChange={handleNewItemChange} />
-        <button onClick={addItem}>Add Item</button>
+  if (pageState === "default") {
+    return (
+      <div className="App">
+          <div className="main-title">Word Whiz</div>
+          <div className="project-by-cont"><h2 className="project-by">Project By:</h2></div>
+          <div className="names-cont"><h4 className="names">Chris Skeen,</h4></div>
+          <div className="play-btn-cont">{playBtn}</div>
       </div>
+  
+    );
+
+
+
+
+  } else if (pageState === 'play'){
+    return (
+    <div className="App">
+      <div className="main-title-play">Word Whiz</div>
+
     </div>
   );
+
+  }
 }
-
-
-
-//   if (pageState === "default") {
-//     return (
-//       <div className="App">
-//           <div className="main-title">Word Whiz</div>
-//           <div className="signup-cont">
-//             {signUpBtn}
-//             {/* <button id="log-in" className="both-btn">Log In!</button> */}
-//           </div>
-//       </div>
-//     );
-
-//   } else if (pageState === 'sign-up'){
-//     return (
-//     <div className="App">
-//       <div className="main-title-signup">Word Whiz</div>
-//     </div>
-//   );
-
-//   }
-// }
 
 export default App;

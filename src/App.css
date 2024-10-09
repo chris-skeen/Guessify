@@ -18,7 +18,7 @@ body {
 
 /* ------------------------ */
 
-/* Main title Area */
+/* Main page Area */
 
 .main-title {
   font-size: 80px;
@@ -31,7 +31,7 @@ body {
   /* ^FLAGFLAGFLAGFLAG^ */
 }
 
-.main-title-signup {
+.main-title-play {
   font-size: 80px;
   font-weight: bold;
   color: #fff;
@@ -49,24 +49,38 @@ body {
       text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.7);
   }
 }
-/* ------------------------ */
 
-/* Middle Page Area */
-.both-btn {
-  width: 75%;
-  height: 15vh;
-  color: white;
-  background-color: #2575fc;
-  font-size: 35pt;
-  margin: 0% 0% 0% 10%;
-}
-
-.already-have-acc-cont {
+.play-btn-cont {
   display: flex;
   justify-content: center;
 }
 
-.already-have-acc {
-
-  color:#fff
+.playBtn {
+  width: 60%;
+  background-color: rgb(44, 200, 65);
+  height: 15vh;
+  font-size: 35pt;
+  color :#fff;
+  border-radius: 100px;
+  border: none;
+  margin-top: 10%;
 }
+
+.project-by-cont {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  margin-bottom: -5%;
+}
+
+.names {
+  color: white;
+}
+
+.names-cont {
+  display: flex;
+  justify-content: center;
+}
+/* ------------------------ */
+
+/* Play Page Area */
