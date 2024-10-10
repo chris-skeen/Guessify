@@ -1,7 +1,7 @@
 // e3dcc849-cf03-4cc2-9016-7bfba82e149a
 
 // ninja:  y36iHryjXZjCSFbe8GyYvw==uRsUrRmlkcA12P5y
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 const url = "https://random-word-api.herokuapp.com/word";
 const startBtn = (
@@ -10,12 +10,32 @@ const startBtn = (
   </button>
 );
 
+let indentify = 1;
 
-function checkAnswer() {
-  console.log("inshallah");
+function checkAnswer1() {
+  if(document.getElementById('btn1').id === indentify) {
+    console.log('winner winner chicken dinner')
+  } else {
+    console.log('wrong')
+  }
+}
+function checkAnswer2() {
+  if(document.getElementById('btn2').id === indentify) {
+    console.log('winner winner chicken dinner')
+  } else {
+    console.log('wrong')
+  }
+}
+function checkAnswer3() {
+  if(document.getElementById('btn3').id === indentify) {
+    console.log('winner winner chicken dinner')
+  } else {
+    console.log('wrong')
+  }
 }
 
 function apiWork() {
+
   function trying(data) {
     try {
       // Definition Area
@@ -29,21 +49,28 @@ function apiWork() {
       document.getElementById("btn2").innerText = "";
       document.getElementById("btn3").innerText = "";
 
-      console.log('Random button for right def '+ randNum)
+      if (randNum == 2) {
+        document.getElementById("btn1").innerText = data[0].word
+      } else {
+        console.log('not 2')
+      }
 
       switch (randNum) {
         case 0:
           document.getElementById("btn1").innerText = data[0].word;
+          indentify = 'btn1'
           break;
         case 1:
           document.getElementById("btn2").innerText = data[0].word;
+          indentify = 'btn2'
           break;
         case 2:
           document.getElementById("btn3").innerText = data[0].word;
           console.log(document.getElementById("btn3").innerText)
+          indentify = 'btn3'
           break;
       }
-
+      console.log(indentify)
       const randomWordsApi =
         "https://random-word-api.herokuapp.com/word?number=2";
       fetch(randomWordsApi)
@@ -51,8 +78,7 @@ function apiWork() {
         .then((data) => setTimeout(randomButtonLogic(data), 3000));
 
       function randomButtonLogic(dataForRandomWord) {
-        console.log(data[0].word)
-        console.log(document.getElementById('btn1').innerText)
+        console.log (data[0].word)
         if ((document.getElementById("btn1").innerText === data[0].word)) {
           document.getElementById("btn2").innerText = dataForRandomWord[0];
           document.getElementById("btn3").innerText = dataForRandomWord[1];
@@ -84,7 +110,6 @@ function apiWork() {
     .then((data) => findWordStuff(data[0]));
 
   function findWordStuff(data) {
-    console.log(data);
     let newUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${data}`;
     fetch(newUrl)
       .then((response) => response.json())
@@ -105,7 +130,6 @@ function App() {
       Play
     </button>
   );
-
   // -----------------------------------------------------------------------------------------------------------------------
 
   if (pageState === "default") {
@@ -133,17 +157,17 @@ function App() {
         </div>
         <div className="test-cont">
           <button
-            onClick={checkAnswer}
+            onClick={checkAnswer1}
             id="btn1"
             className="test-btns"
           ></button>
           <button
-            onClick={checkAnswer}
+            onClick={checkAnswer2}
             id="btn2"
             className="test-btns"
           ></button>
           <button
-            onClick={checkAnswer}
+            onClick={checkAnswer3}
             id="btn3"
             className="test-btns"
           ></button>
