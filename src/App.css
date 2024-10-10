@@ -64,6 +64,11 @@ body {
   border-radius: 100px;
   border: none;
   margin-top: 10%;
+  cursor: pointer;
+}
+
+.playBtn:hover{
+  background-color: rgb(44, 170, 65)
 }
 
 .project-by-cont {
