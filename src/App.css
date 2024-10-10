@@ -38,7 +38,7 @@ body {
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
   position: relative;
   animation: glow 1.5s infinite alternate;
-  margin-bottom: 120%;  
+  margin-top: -80%;  
 }
 
 @keyframes glow {
@@ -84,3 +84,109 @@ body {
 /* ------------------------ */
 
 /* Play Page Area */
+
+.definition-area {
+  font-size: 20pt;
+  color: white;
+  text-align: center;
+}
+
+.start-btn-cont {
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* CSS */
+.start-btn {
+  font-size: 20pt;
+  width: 60%;
+  height: 10vh;
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.start-btn:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.start-btn:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes smooth-appear {
+  to{
+    bottom: 20px;
+    opacity:1;
+  }
+}
+.definition-area-cont {
+  background-color: black;
+  color:white;
+  padding: 20px;
+  position: fixed;
+  bottom: -100%;
+  opacity:0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  animation: smooth-appear 1s ease forwards;
+  margin-bottom: 18%;
+  width: 50%;
+  height: 20vh;
+}
