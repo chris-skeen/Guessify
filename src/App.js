@@ -3,6 +3,9 @@
 // ninja:  y36iHryjXZjCSFbe8GyYvw==uRsUrRmlkcA12P5y
 import { useState } from "react";
 import "./App.css";
+import confetti from "canvas-confetti";
+
+
 const url = "https://random-word-api.herokuapp.com/word";
 const startBtn = (
   <button onClick={apiWork} className="start-btn">
@@ -10,31 +13,46 @@ const startBtn = (
   </button>
 );
 
+
 let indentify = 1;
 
 function checkAnswer1() {
+  
   if(document.getElementById('btn1').id === indentify) {
     console.log('winner winner chicken dinner')
+    confetti()
+    apiWork()
   } else {
+    document.getElementById('definition-area-cont').innerHTML = '<div class="definition-area-wrong">WRONG</div>'
     console.log('wrong')
+    apiWork()
   }
 }
 function checkAnswer2() {
   if(document.getElementById('btn2').id === indentify) {
     console.log('winner winner chicken dinner')
+    confetti()
+    apiWork()
   } else {
+    document.getElementById('definition-area-cont').innerHTML = '<div class="definition-area-wrong">WRONG</div>'
     console.log('wrong')
+    apiWork()
   }
 }
 function checkAnswer3() {
   if(document.getElementById('btn3').id === indentify) {
     console.log('winner winner chicken dinner')
+    confetti()
+    apiWork()
   } else {
+    document.getElementById('definition-area-cont').innerHTML = '<div class="definition-area-wrong">WRONG</div>'
     console.log('wrong')
+    apiWork()
   }
 }
 
 function apiWork() {
+  console.log('Api Work Function Was Called.')
 
   function trying(data) {
     try {
@@ -50,7 +68,7 @@ function apiWork() {
       document.getElementById("btn3").innerText = "";
 
       if (randNum == 2) {
-        document.getElementById("btn1").innerText = data[0].word
+        document.getElementById("btn3").innerText = data[0].word
       } else {
         console.log('not 2')
       }
@@ -66,7 +84,6 @@ function apiWork() {
           break;
         case 2:
           document.getElementById("btn3").innerText = data[0].word;
-          console.log(document.getElementById("btn3").innerText)
           indentify = 'btn3'
           break;
       }
@@ -75,9 +92,10 @@ function apiWork() {
         "https://random-word-api.herokuapp.com/word?number=2";
       fetch(randomWordsApi)
         .then((response) => response.json())
-        .then((data) => setTimeout(randomButtonLogic(data), 3000));
+        .then((data) => setTimeout(randomButtonLogic(data), 1000));
 
       function randomButtonLogic(dataForRandomWord) {
+        console.log(data)
         console.log (data[0].word)
         if ((document.getElementById("btn1").innerText === data[0].word)) {
           document.getElementById("btn2").innerText = dataForRandomWord[0];
@@ -86,13 +104,8 @@ function apiWork() {
           document.getElementById("btn1").innerText = dataForRandomWord[1];
           document.getElementById("btn3").innerText = dataForRandomWord[0];
         } else if (document.getElementById("btn3").innerText === data[0].word){
-            let randInt = Math.floor(Math.random() * 2);
-            document.getElementById("btn1").innerText = dataForRandomWord[randInt];
-            if (randInt == 0) {
-              document.getElementById("btn3").innerText = dataForRandomWord[1];
-            } else {
-              document.getElementById("btn2").innerText = dataForRandomWord[0];
-            }
+            document.getElementById("btn1").innerText = dataForRandomWord[1]
+            document.getElementById("btn2").innerText = dataForRandomWord[0]
 
         } else {
           console.log('error occured')
@@ -140,7 +153,7 @@ function App() {
           <h2 className="project-by">Project By:</h2>
         </div>
         <div className="names-cont">
-          <h4 className="names">Chris Skeen, Kilan Miller</h4>
+          <h4 className="names">Chris Skeen</h4>
         </div>
         <div className="play-btn-cont">{playBtn}</div>
       </div>
@@ -148,6 +161,7 @@ function App() {
   } else if (pageState === "play") {
     return (
       <div className="App">
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
         <div className="main-title-play">Word Whiz</div>
         <div className="start-btn-cont">{startBtn}</div>
         <div id="definition-area-cont" className="definition-area-cont">

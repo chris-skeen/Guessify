@@ -298,3 +298,9 @@ body {
   }
 
 }
+
+.definition-area-wrong {
+  font-size: 80pt;
+  color: red;
+  text-align: center;
+}
